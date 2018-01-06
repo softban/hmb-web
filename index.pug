@@ -1,0 +1,59 @@
+
+html
+  head
+    title #{title}
+    link(rel="stylesheet", type="text/css", href="style.css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css", integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy", crossorigin="anonymous")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js', integrity='sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4', crossorigin='anonymous')
+
+  body
+    
+    section#banner.d-flex.flex-row.justify-content-around
+      .p-2
+        h1 HoldMyBeer
+    
+      .p-2
+        button.btn.btn-primary(type='button') Discord
+        button.btn.btn-primary(type='button', data-toggle='modal', data-target='#donation-modal') Donate
+    
+      #donation-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='donation-modal-label', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h5#donation-modal-label.modal-title Donations
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-body
+              | ...
+            .modal-footer
+              button.btn.btn-primary(type='button') Submit Payment
+              
+    section#information
+      .row
+        .col-md-4
+          <!-- Welcome to.. -->
+        .col-md-8
+          <!-- highligh.mp4 -->
+          
+
+    section#event-timeline
+      
+    section#social-media.jumbotron
+      <a href="#" class="fa fa-facebook"></a>
+      <a href="https://twitter.com/HoldMyBeerGuild" class="fa fa-twitter"></a>
+    
+    section#sponsers.jumbotron
+                
+    section#footer  
+      p(id="server-time") 
+      script(src="/socket.io/socket.io.js")
+      script.
+        var socket = io();
+        var el = document.getElementById('server-time');
+        socket.on('time', function(timeString) {
+          el.innerHTML = timeString;
+        });
